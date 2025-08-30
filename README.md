@@ -1,4 +1,4 @@
-﻿# Dark Heresy 2e  Foundry VTT System (WIP)
+﻿# Dark Heresy 2e  Foundry VTT System 
 
 Community-driven Foundry VTT system for Dark Heresy Second Edition. Early work-in-progress focused on getting core sheets, localization, and starter compendia in place.
 
@@ -46,7 +46,7 @@ TBD (to be clarified). Until then, assume all rights reserved unless a file stat
 
 ---
 
-# Dark Heresy 2e  система для Foundry VTT (WIP)
+# Dark Heresy 2e  система для Foundry VTT 
 
 Сообщественный проект системы Foundry VTT для Dark Heresy Second Edition. Ранняя стадия: базовые листы, локализация и стартовые компендии.
 
