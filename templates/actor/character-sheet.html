@@ -1,0 +1,109 @@
+{{!--
+  DH2e Character Sheet Template
+  RU: Шаблон листа персонажа. Левая колонка — аватар и шкала ран. Правая — имя, профиль и характеристики.
+  EN: Character sheet template. Left column: avatar and wounds bar. Right: name, profile and stats.
+--}}
+<form class="{{cssClass}}" autocomplete="off">
+	<section class="sheet-body">
+		<div class="two-col left-avatar">
+			{{!-- Left: avatar + wounds --}}
+			<aside class="char-panel">
+				<img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+				<div class="wounds-container">
+					<div class="wounds-bar">
+						<div class="wounds-fill" style="width: {{woundsPercent}}%;"></div>
+						<div class="wounds-value">
+							<span class="wounds-edit" contenteditable="true" data-path="system.wounds.current">{{system.wounds.current}}</span>
+							<span class="wounds-sep">/</span>
+							<span class="wounds-max" title="Максимум рассчитывается автоматически">{{system.wounds.maximum}}</span>
+						</div>
+					</div>
+					<div class="fate-bar">
+						<span class="fate-label">Судьба:</span>
+						<span class="fate-current" contenteditable="true" data-path="system.fate.current">{{system.fate.current}}</span>
+						<span class="wounds-sep">/</span>
+						<span class="fate-max" title="Максимум недоступен для редактирования">{{system.fate.maximum}}</span>
+					</div>
+				</div>
+			</aside>
+			{{!-- Right: fixed header --}}
+			<div class="right-panel">
+				<h1 class="charname">
+					<input name="name" type="text" value="{{actor.name}}" placeholder="Имя персонажа" />
+					<button type="button" class="sheet-settings" title="Редактировать характеристики">
+						<i class="fas fa-wrench" aria-hidden="true"></i>
+					</button>
+				</h1>
+				<div class="profile-meta">
+					<div class="meta-row"><span class="meta-label">Родной мир:</span><span class="meta-value">{{system.profile.homeworld}}</span></div>
+					<div class="meta-row"><span class="meta-label">Роль:</span><span class="meta-value">{{system.profile.role}}</span></div>
+					<div class="meta-row"><span class="meta-label">Предыстория:</span><span class="meta-value">{{system.profile.background}}</span></div>
+					<div class="meta-row"><span class="meta-label">Элитное улучшение:</span><span class="meta-value">{{system.profile.elite}}</span></div>
+				</div>
+
+				{{!-- Fixed characteristics grid + initiative --}}
+				<div class="attributes-grid">
+					{{#each characteristics}}
+					<div class="attr" data-key="{{this.key}}">
+						<div class="abbr rollable" title="Кинуть d100 по {{this.label}}">{{this.label}}</div>
+						<div class="attr-values">
+							<div class="attr-main">{{this.value}}</div>
+							<div class="attr-mod">Мод: {{modifier this.value}}</div>
+						</div>
+					</div>
+					{{/each}}
+				</div>
+			</div>
+		</div>
+
+		{{!-- Full-width tabs below the header --}}
+		<nav class="sheet-tabs tabs" data-group="primary">
+			<a class="item" data-tab="stats">Характеристики</a>
+			<a class="item" data-tab="props">Свойства</a>
+			<a class="item" data-tab="develop">Развитие</a>
+		</nav>
+
+		<div class="tab-container">
+			<div class="tab" data-group="primary" data-tab="stats">
+				{{!-- Top already shows stats; keep this area empty intentionally. --}}
+			</div>
+
+			<div class="tab" data-group="primary" data-tab="props">
+				{{!-- Инфо полоса больше не нужна — дроп работает по всей вкладке --}}
+				{{#if items.length}}
+				<ul class="props-list" style="margin-top:8px; list-style:none; padding:0;">
+					{{#each items}}
+					{{#unless (eq this.type "tendency")}}
+					<li data-item-id="{{this.id}}" style="display:flex; align-items:center; gap:8px; padding:4px 6px; background:#0b0b0d; border:1px solid #222; border-radius:6px; margin-bottom:4px;">
+						<img src="{{this.img}}" width="24" height="24" style="border-radius:4px;"/>
+						<span class="item-open" data-item-id="{{this.id}}" style="color:#e9e9ee; font-weight:600; flex:1; cursor:pointer;" title="Открыть">{{this.name}}</span>
+						<button type="button" class="item-delete" data-item-id="{{this.id}}" title="Удалить" style="margin-left:auto; background:transparent; color:#999; border:1px solid transparent; border-radius:4px; width:26px; height:24px; display:inline-flex; align-items:center; justify-content:center;">
+							<i class="fas fa-trash"></i>
+						</button>
+					</li>
+					{{/unless}}
+					{{/each}}
+				</ul>
+				{{/if}}
+			</div>
+
+			<div class="tab" data-group="primary" data-tab="develop">
+				{{#if items.length}}
+				<ul class="props-list" style="margin-top:8px; list-style:none; padding:0;">
+					{{#each items}}
+					{{#if (eq this.type "tendency")}}
+					<li data-item-id="{{this.id}}" style="display:flex; align-items:center; gap:8px; padding:4px 6px; background:#0b0b0d; border:1px solid #222; border-radius:6px; margin-bottom:4px;">
+						<img src="{{this.img}}" width="24" height="24" style="border-radius:4px;"/>
+						<span class="item-open" data-item-id="{{this.id}}" style="color:#e9e9ee; font-weight:600; flex:1; cursor:pointer;" title="Открыть">{{this.name}}</span>
+						<button type="button" class="item-delete" data-item-id="{{this.id}}" title="Удалить" style="margin-left:auto; background:transparent; color:#999; border:1px solid transparent; border-radius:4px; width:26px; height:24px; display:inline-flex; align-items:center; justify-content:center;">
+							<i class="fas fa-trash"></i>
+						</button>
+					</li>
+					{{/if}}
+					{{/each}}
+				</ul>
+				{{/if}}
+			</div>
+		</div>
+	</section>
+</form>

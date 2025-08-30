@@ -1,0 +1,71 @@
+  {
+  "id": "DH2e",
+  "type": "system",
+  "title": "Dark Heresy 2nd Edition",
+  "description": "Foundry VTT system for Dark Heresy 2nd Edition.",
+  "version": "0.0.2",
+  "compatibility": { 
+    "minimum": "13", 
+    "verified": "13" 
+  },
+  "authors": [ 
+    { 
+      "name": "Arcturn" 
+    } 
+  ],
+  "template": "template.json",
+  "scripts": [
+    "module/sheets/character-sheet.js",
+    "module/sheets/item/homeworld-sheet.js",
+    "module/sheets/item/tendency-sheet.js",
+    "module/dh2e.js"
+  ],
+  "styles": [
+    "styles/dh2e.css"
+  ],
+  "languages": [ 
+    { 
+      "lang": "ru", 
+      "name": "Русский", 
+      "path": "lang/ru.json" 
+    } 
+  ],
+  "packs": [
+    {
+      "name": "dh2e-homeworlds",
+      "label": "Dark Heresy 2e | Родной мир",
+      "path": "packs/dh2e-homeworlds.db",
+      "type": "Item",
+      "system": "DH2e",
+      "private": false,
+      "folder": "Dark Heresy 2e"
+    },
+    {
+      "name": "dh2e-roles",
+      "label": "Dark Heresy 2e | Роль",
+      "path": "packs/dh2e-roles.db",
+      "type": "Item",
+      "system": "DH2e",
+      "private": false,
+      "folder": "Dark Heresy 2e"
+    },
+    {
+      "name": "dh2e-backgrounds",
+      "label": "Dark Heresy 2e | Предыстория",
+      "path": "packs/dh2e-backgrounds.db",
+      "type": "Item",
+      "system": "DH2e",
+      "private": false,
+      "folder": "Dark Heresy 2e"
+    },
+    {
+      "name": "dh2e-elite-advances",
+      "label": "Dark Heresy 2e | Элитное улучшение",
+      "path": "packs/dh2e-elite-advances.db",
+      "type": "Item",
+      "system": "DH2e",
+      "private": false,
+      "folder": "Dark Heresy 2e"
+    }
+  ]
+  }

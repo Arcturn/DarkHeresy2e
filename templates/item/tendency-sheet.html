@@ -1,0 +1,54 @@
+{{!-- Tendency Item Sheet --}}
+<form class="{{cssClass}}" autocomplete="off">
+	<header class="sheet-header">
+		<img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+		<h1 class="name">
+			<input name="name" type="text" value="{{item.name}}" placeholder="Название" {{#unless isEditableMode}}readonly{{/unless}}/>
+		</h1>
+	</header>
+
+	<nav class="sheet-tabs tabs" data-group="primary">
+		<a class="item" data-tab="description">Описание</a>
+		<a class="item" data-tab="properties">Свойства</a>
+	</nav>
+
+	<section class="sheet-body">
+		<div class="hw-toggle">
+			<label class="switch">
+				<input type="checkbox" class="tendency-editable-toggle" {{#if isEditableMode}}checked{{/if}}/>
+				<span class="slider"></span>
+			</label>
+		</div>
+
+		<div class="tab" data-group="primary" data-tab="description">
+			<div class="field">
+				<label>Описание</label>
+				{{editor system.description target="system.description" button=canEditEditor editable=canEditEditor}}
+			</div>
+		</div>
+
+		<div class="tab" data-group="primary" data-tab="properties">
+			<div class="props-grid">
+				<div class="compact-field">
+					<span class="mini-label">Характеристика</span>
+					<select name="system.bindCharacteristic" {{#unless isEditableMode}}disabled{{/unless}}>
+						<option value="">—</option>
+						<option value="ws" {{#if (eq system.bindCharacteristic "ws")}}selected{{/if}}>Навык Рукопашной</option>
+						<option value="bs" {{#if (eq system.bindCharacteristic "bs")}}selected{{/if}}>Навык Стрельбы</option>
+						<option value="s"  {{#if (eq system.bindCharacteristic "s") }}selected{{/if}}>Сила</option>
+						<option value="t"  {{#if (eq system.bindCharacteristic "t") }}selected{{/if}}>Выносливость</option>
+						<option value="ag" {{#if (eq system.bindCharacteristic "ag")}}selected{{/if}}>Ловкость</option>
+						<option value="int"{{#if (eq system.bindCharacteristic "int")}}selected{{/if}}>Интеллект</option>
+						<option value="per"{{#if (eq system.bindCharacteristic "per")}}selected{{/if}}>Восприятие</option>
+						<option value="wp" {{#if (eq system.bindCharacteristic "wp")}}selected{{/if}}>Сила Воли</option>
+						<option value="fel"{{#if (eq system.bindCharacteristic "fel")}}selected{{/if}}>Общительность</option>
+						<option value="inf"{{#if (eq system.bindCharacteristic "inf")}}selected{{/if}}>Влияние</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</section>
+</form>
+
+
+

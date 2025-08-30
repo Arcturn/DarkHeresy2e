@@ -1,0 +1,30 @@
+﻿# Node / tooling
+node_modules/
+.npm/
+coverage/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Build artifacts (if you later add a build step)
+dist/
+build/
+
+# OS / editor junk
+*.log
+*.tmp
+*.swp
+
+# Foundry VTT cache and runtime data (do not commit worlds or data stores)
+Data/
+worlds/
+modules/*/worlds/
+
+# Pack DBs are usually committed for systems (keep if you want to ship them)
+# If you prefer to exclude, uncomment the next line
+# packs/*.db
+
+# Env / secrets
+.env
+.env.*

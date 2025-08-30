@@ -1,0 +1,67 @@
+{
+	"Actor": {
+		"types": ["character"],
+		"templates": {},
+		"character": {
+			"name": "",
+			"system": {
+				"characteristics": {
+					"ws": { "value": 25 },
+					"bs": { "value": 25 },
+					"s":  { "value": 25 },
+					"t":  { "value": 25 },
+					"ag": { "value": 25 },
+					"int":{ "value": 25 },
+					"per":{ "value": 25 },
+					"wp": { "value": 25 },
+					"fel":{ "value": 25 },
+					"inf":{ "value": 25 }
+				},
+				"wounds": {
+					"current": 0,
+					"maximum": 0
+				},
+				"fate": {
+					"current": 0,
+					"maximum": 0
+				},
+				"profile": {
+					"homeworld": "",
+					"role": "",
+					"background": "",
+					"elite": ""
+				}
+			}
+		}
+	},
+	"Item": {
+		"types": ["homeworld", "tendency"],
+		"templates": {},
+		"homeworld": {
+			"name": "",
+			"type": "homeworld",
+			"img": "icons/svg/book.svg",
+			"system": {
+				"description": "",
+				"editable": true,
+				"woundsFormula": "",
+				"fateBase": 0,
+				"blessingThreshold": 0,
+				"modPlus1": "",
+				"modPlus2": "",
+				"modMinus": ""
+			}
+		},
+		"tendency": {
+			"name": "",
+			"type": "tendency",
+			"img": "icons/svg/book.svg",
+			"system": {
+				"description": "",
+				"editable": true,
+				"bindCharacteristic": ""
+			}
+		}
+	}
+}
+

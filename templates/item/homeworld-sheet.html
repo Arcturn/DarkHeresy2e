@@ -1,0 +1,99 @@
+{{!-- Homeworld Item Sheet --}}
+<form class="{{cssClass}}" autocomplete="off">
+	<header class="sheet-header">
+		<img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+		<h1 class="name">
+			<input name="name" type="text" value="{{item.name}}" placeholder="Название" {{#unless isEditableMode}}readonly{{/unless}}/>
+		</h1>
+	</header>
+
+	<nav class="sheet-tabs tabs" data-group="primary">
+		<a class="item" data-tab="description">Описание</a>
+		<a class="item" data-tab="properties">Свойства</a>
+	</nav>
+
+	<section class="sheet-body">
+		<div class="hw-toggle">
+			<label class="switch">
+				<input type="checkbox" class="hw-editable-toggle" {{#if isEditableMode}}checked{{/if}}/>
+				<span class="slider"></span>
+			</label>
+		</div>
+
+		<div class="tab" data-group="primary" data-tab="description">
+			<div class="field">
+				<label>Описание</label>
+				{{editor system.description target="system.description" button=canEditEditor editable=canEditEditor}}
+			</div>
+		</div>
+
+		<div class="tab" data-group="primary" data-tab="properties">
+			<div class="props-grid">
+				<div class="compact-field">
+					<span class="mini-label">Раны</span>
+					<input type="text" name="system.woundsFormula" value="{{system.woundsFormula}}" placeholder="9+1d5" {{#unless isEditableMode}}readonly{{/unless}}/>
+				</div>
+				<div class="compact-field">
+					<span class="mini-label">Судьба</span>
+					<input type="number" name="system.fateBase" value="{{system.fateBase}}" min="0" step="1" {{#unless isEditableMode}}readonly{{/unless}}/>
+				</div>
+				<div class="compact-field">
+					<span class="mini-label">Порог благ.</span>
+					<input type="number" name="system.blessingThreshold" value="{{system.blessingThreshold}}" min="1" max="10" step="1" {{#unless isEditableMode}}readonly{{/unless}}/>
+				</div>
+				<div class="compact-field mods">
+					<span class="mini-label">Модиф.</span>
+					<div class="mods-inline">
+						<div class="mod-group">
+							<span class="mod-badge plus">+</span>
+							<select name="system.modPlus1" {{#unless isEditableMode}}disabled{{/unless}}>
+								<option value="">—</option>
+								<option value="ws" {{#if (eq system.modPlus1 "ws")}}selected{{/if}}>Навык Рукопашной</option>
+								<option value="bs" {{#if (eq system.modPlus1 "bs")}}selected{{/if}}>Навык Стрельбы</option>
+								<option value="s"  {{#if (eq system.modPlus1 "s") }}selected{{/if}}>Сила</option>
+								<option value="t"  {{#if (eq system.modPlus1 "t") }}selected{{/if}}>Выносливость</option>
+								<option value="ag" {{#if (eq system.modPlus1 "ag")}}selected{{/if}}>Ловкость</option>
+								<option value="int"{{#if (eq system.modPlus1 "int")}}selected{{/if}}>Интеллект</option>
+								<option value="per"{{#if (eq system.modPlus1 "per")}}selected{{/if}}>Восприятие</option>
+								<option value="wp" {{#if (eq system.modPlus1 "wp")}}selected{{/if}}>Сила Воли</option>
+								<option value="fel"{{#if (eq system.modPlus1 "fel")}}selected{{/if}}>Общительность</option>
+								<option value="inf"{{#if (eq system.modPlus1 "inf")}}selected{{/if}}>Влияние</option>
+							</select>
+						</div>
+						<div class="mod-group">
+							<span class="mod-badge plus">+</span>
+							<select name="system.modPlus2" {{#unless isEditableMode}}disabled{{/unless}}>
+								<option value="">—</option>
+								<option value="ws" {{#if (eq system.modPlus2 "ws")}}selected{{/if}}>Навык Рукопашной</option>
+								<option value="bs" {{#if (eq system.modPlus2 "bs")}}selected{{/if}}>Навык Стрельбы</option>
+								<option value="s"  {{#if (eq system.modPlus2 "s") }}selected{{/if}}>Сила</option>
+								<option value="t"  {{#if (eq system.modPlus2 "t") }}selected{{/if}}>Выносливость</option>
+								<option value="ag" {{#if (eq system.modPlus2 "ag")}}selected{{/if}}>Ловкость</option>
+								<option value="int"{{#if (eq system.modPlus2 "int")}}selected{{/if}}>Интеллект</option>
+								<option value="per"{{#if (eq system.modPlus2 "per")}}selected{{/if}}>Восприятие</option>
+								<option value="wp" {{#if (eq system.modPlus2 "wp")}}selected{{/if}}>Сила Воли</option>
+								<option value="fel"{{#if (eq system.modPlus2 "fel")}}selected{{/if}}>Общительность</option>
+								<option value="inf"{{#if (eq system.modPlus2 "inf")}}selected{{/if}}>Влияние</option>
+							</select>
+						</div>
+						<div class="mod-group">
+							<span class="mod-badge minus">−</span>
+							<select name="system.modMinus" {{#unless isEditableMode}}disabled{{/unless}}>
+								<option value="">—</option>
+								<option value="ws" {{#if (eq system.modMinus "ws")}}selected{{/if}}>Навык Рукопашной</option>
+								<option value="bs" {{#if (eq system.modMinus "bs")}}selected{{/if}}>Навык Стрельбы</option>
+								<option value="s"  {{#if (eq system.modMinus "s") }}selected{{/if}}>Сила</option>
+								<option value="t"  {{#if (eq system.modMinus "t") }}selected{{/if}}>Выносливость</option>
+								<option value="ag" {{#if (eq system.modMinus "ag")}}selected{{/if}}>Ловкость</option>
+								<option value="int"{{#if (eq system.modMinus "int")}}selected{{/if}}>Интеллект</option>
+								<option value="per"{{#if (eq system.modMinus "per")}}selected{{/if}}>Восприятие</option>
+								<option value="wp" {{#if (eq system.modMinus "wp")}}selected{{/if}}>Сила Воли</option>
+								<option value="fel"{{#if (eq system.modMinus "fel")}}selected{{/if}}>Общительность</option>
+								<option value="inf"{{#if (eq system.modMinus "inf")}}selected{{/if}}>Влияние</option>
+							</select>
+						</div>
+					</div>
+				</div>
+		</div>
+	</section>
+</form>
